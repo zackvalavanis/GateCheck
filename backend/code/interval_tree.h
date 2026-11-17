@@ -23,6 +23,12 @@ public:
   // Destroys the interval tree
   ~Interval_Tree();
 
+  Node *New_Node(int low, int high);
+
+  void Insert_Interval(int a, int b);
+
+  void Update_Maximum(Node *root);
+
 private:
   Node *root = nullptr;
 };
