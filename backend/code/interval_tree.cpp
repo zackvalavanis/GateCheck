@@ -73,6 +73,25 @@ std::string Interval_Tree::report(Node *root)
 
 void Interval_Tree::Update_Maximum(Node *root)
 {
+  if (root == nullptr)
+  {
+    return;
+  }
+
+  Node *curr = root;
+  int m = curr->i.high;
+
+  if (curr->left != nullptr)
+  {
+    m = std::max(m, curr->left->max);
+  }
+
+  if (curr->right != nullptr)
+  {
+    m = std::max(m, curr->right->max);
+  }
+
+  root->max = m;
 }
 
 Node *Interval_Tree::Get_Root()
