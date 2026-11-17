@@ -115,6 +115,5 @@ bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
   {
     return true;
   }
-
   return false;
 }
