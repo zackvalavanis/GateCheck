@@ -101,4 +101,20 @@ Node *Interval_Tree::Get_Root()
 
 bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
 {
+  if (a.high == NULL || a.low == NULL || b.high == NULL || b.low == NULL)
+  {
+    return false;
+  }
+
+  if (a.high <= b.high && a.high > b.low || b.high <= a.high && b.high > a.low)
+  {
+    return true;
+  }
+
+  if (a.low >= b.low && a.low < b.high || b.low >= a.low && b.low < a.high)
+  {
+    return true;
+  }
+
+  return false;
 }
