@@ -98,3 +98,7 @@ Node *Interval_Tree::Get_Root()
 {
   return root;
 }
+
+bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
+{
+}

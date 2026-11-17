@@ -33,6 +33,8 @@ public:
 
   Node *Get_Root();
 
+  bool Interval_Overlap(const Interval &a, const Interval &b);
+
 private:
   Node *root = nullptr;
 };
