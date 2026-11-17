@@ -8,7 +8,7 @@ struct Interval
 
 struct Node
 {
-  Interval *i;
+  Interval i;
   int max;
   Node *left;
   Node *right;
@@ -28,6 +28,10 @@ public:
   void Insert_Interval(int a, int b);
 
   void Update_Maximum(Node *root);
+
+  std::string report(Node *root);
+
+  Node *Get_Root();
 
 private:
   Node *root = nullptr;
