@@ -18,10 +18,21 @@ int main()
     gate.Insert_Interval(body["low"], body["high"]);
     res.set_content(json{{"ok", true}}.dump(), "application/json"); });
 
-  svr.Get("/api/report", [&](const httplib::Request &, httplib::Response &res)
+  svr.Get("/api/report", [&](const httplib::Request &req, httplib::Response &res)
           {
     std::lock_guard<std::mutex> lock(mtx);
     res.set_content(gate.report(gate.Get_Root()), "text/plain"); });
+
+  svr.Post("/api/conflicts", [&](const httplib::Request &req, httplib::Response &res)
+           {
+    auto body = json::parse(req.body);
+    std::lock_guard<std::mutex> lock(mtx);
+
+    json out = json::array();
+
+    for(const Interval &iv : gate.Find_Conflicts(body["low"], body["high"]))
+    out.push_back({{"low", iv.low}, {"high", iv.high}});
+    res.set_content(out.dump() + "\n", "application/json"); });
 
   std::cout << "Gatecheck server on http://localhost:8080" << std::endl;
 
