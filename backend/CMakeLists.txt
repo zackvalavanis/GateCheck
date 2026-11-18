@@ -69,3 +69,7 @@ ENABLE_TESTING()
 
 # create an executable for main.cpp in app folder
 add_executable( run_app "app/main.cpp" ${USER_FILES} )
+
+find_package(Threads REQUIRED)
+add_executable(run_server app/server.cpp code/interval_tree.cpp)
+target_link_libraries(run_server Threads::Threads)  

@@ -35,6 +35,8 @@ public:
 
   bool Interval_Overlap(const Interval &a, const Interval &b);
 
+  void find_helper(Node *node, const Interval &q, std::vector<Interval> &out);
+
 private:
   Node *root = nullptr;
 };

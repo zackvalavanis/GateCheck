@@ -117,3 +117,29 @@ bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
   }
   return false;
 }
+
+void Interval_Tree::find_helper(Node *node, const Interval &q, std::vector<Interval> &out)
+{
+  if (node == nullptr)
+  {
+    return;
+  }
+
+  if (node->max < q.low)
+  {
+    return;
+  }
+
+  find_helper(node->left, q, out);
+
+  if (Interval_Overlap(node->i, q))
+  {
+    out.push_back(node->i);
+  }
+
+  if (node->i.low >= q.high)
+  {
+    return;
+  }
+  find_helper(node->right, q, out);
+}

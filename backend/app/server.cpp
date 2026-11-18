@@ -22,4 +22,12 @@ int main()
           {
     std::lock_guard<std::mutex> lock(mtx);
     res.set_content(gate.report(gate.Get_Root()), "text/plain"); });
+
+  std::cout << "Gatecheck server on http://localhost:8080" << std::endl;
+
+  if (!svr.listen("0.0.0.0", 8080))
+  {
+    std::cerr << "Failed to start: port 8080 may be in use" << std::endl;
+    return 1;
+  }
 }
