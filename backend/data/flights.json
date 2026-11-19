@@ -1,0 +1,32 @@
+[
+  {
+    "flight": "UA1234",
+    "gate": "B12",
+    "arrive": "08:30",
+    "depart": "09:15"
+  },
+  {
+    "flight": "AA567",
+    "gate": "B12",
+    "arrive": "09:15",
+    "depart": "10:00"
+  },
+  {
+    "flight": "UA2786",
+    "gate": "B12",
+    "arrive": "08:45",
+    "depart": "09:40"
+  },
+  {
+    "flight": "UA88",
+    "gate": "B12",
+    "arrive": "10:00",
+    "depart": "10:45"
+  },
+  {
+    "flight": "AA880",
+    "gate": "B12",
+    "arrive": "10:45",
+    "depart": "11:30"
+  }
+]

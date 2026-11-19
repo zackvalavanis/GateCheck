@@ -101,11 +101,6 @@ Node *Interval_Tree::Get_Root()
 
 bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
 {
-  if (a.high == NULL || a.low == NULL || b.high == NULL || b.low == NULL)
-  {
-    return false;
-  }
-
   if (a.high <= b.high && a.high > b.low || b.high <= a.high && b.high > a.low)
   {
     return true;
@@ -149,4 +144,11 @@ void Interval_Tree::Find_Helper(Node *node, const Interval &q, std::vector<Inter
     return;
   }
   Find_Helper(node->right, q, out);
+}
+
+std::vector<Interval> Interval_Tree::All_Intervals()
+{
+  std::vector<Interval> out;
+  Find_Helper(root, Interval{0, 1440}, out);
+  return out;
 }

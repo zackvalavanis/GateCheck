@@ -2,14 +2,37 @@
 #include "../third_party/json.hpp"
 #include "../code/interval_tree.h"
 #include <mutex>
+#include <iostream>
+#include <fstream>
 
 using json = nlohmann::json;
+
+int to_minutes(const std::string &time)
+{
+  int hours = std::stoi(time.substr(0, 2));
+  int minutes = std::stoi(time.substr(3, 2));
+  return hours * 60 + minutes;
+}
 
 int main()
 {
   httplib::Server svr;
   Interval_Tree gate;
   std::mutex mtx;
+
+  std::ifstream file("../data/flights.json");
+  json flights = json::parse(file);
+
+  for (const auto &f : flights)
+  {
+    std::string flight = f["flight"];
+    std::string gate_id = f["gate"];
+    int low = to_minutes(f["arrive"]);
+    int high = to_minutes(f["depart"]);
+
+    std::cout << flight << " at " << gate_id << ": " << low << " to " << high << std::endl;
+    gate.Insert_Interval(low, high);
+  }
 
   svr.Post("/api/intervals", [&](const httplib::Request &req, httplib::Response &res)
            {

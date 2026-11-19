@@ -39,6 +39,8 @@ public:
 
   std::vector<Interval> Find_Conflicts(int low, int high);
 
+  std::vector<Interval> All_Intervals();
+
 private:
   Node *root = nullptr;
 };
