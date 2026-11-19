@@ -46,6 +46,14 @@ int main()
     std::lock_guard<std::mutex> lock(mtx);
     res.set_content(gate.report(gate.Get_Root()), "text/plain"); });
 
+  svr.Get("/api/all_intervals", [&](const httplib::Request &req, httplib::Response &res)
+          {
+    std::lock_guard<std::mutex> lock(mtx);
+    json out = json::array();
+    for(const Interval & iv : gate.All_Intervals())
+      out.push_back({{"low", iv.low}, {"high", iv.high}}); 
+    res.set_content(out.dump() + "\n", "application/json"); });
+
   svr.Post("/api/conflicts", [&](const httplib::Request &req, httplib::Response &res)
            {
     auto body = json::parse(req.body);

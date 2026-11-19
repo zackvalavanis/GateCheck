@@ -1,6 +1,6 @@
 
 
 export interface Flights {
-  id: number
-
+  low: number,
+  high: number
 } 
