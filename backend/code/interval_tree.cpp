@@ -20,11 +20,12 @@ Interval_Tree::~Interval_Tree()
   Destroy_Recursive(root);
 };
 
-Node *Interval_Tree::New_Node(int low, int high, std::string flight, std::string gate_id)
+Node *Interval_Tree::New_Node(int low, int high, std::string airport, std::string flight, std::string gate_id)
 {
   Node *new_node = new Node();
   new_node->i.high = high;
   new_node->i.low = low;
+  new_node->i.airport = airport;
   new_node->i.gate_id = gate_id;
   new_node->i.flight = flight;
   new_node->left = nullptr;
@@ -33,12 +34,12 @@ Node *Interval_Tree::New_Node(int low, int high, std::string flight, std::string
   return new_node;
 };
 
-void Interval_Tree::Insert_Interval(int a, int b, std::string flight, std::string gate_id)
+void Interval_Tree::Insert_Interval(int a, int b, std::string airport, std::string flight, std::string gate_id)
 {
 
   if (root == nullptr)
   {
-    root = New_Node(a, b, flight, gate_id);
+    root = New_Node(a, b, airport, flight, gate_id);
     return;
   }
   Node *curr = root;
@@ -51,7 +52,7 @@ void Interval_Tree::Insert_Interval(int a, int b, std::string flight, std::strin
     {
       if (curr->left == nullptr)
       {
-        curr->left = New_Node(a, b, flight, gate_id);
+        curr->left = New_Node(a, b, airport, flight, gate_id);
         return;
       }
       else
@@ -63,7 +64,7 @@ void Interval_Tree::Insert_Interval(int a, int b, std::string flight, std::strin
     {
       if (curr->right == nullptr)
       {
-        curr->right = New_Node(a, b, flight, gate_id);
+        curr->right = New_Node(a, b, airport, flight, gate_id);
         return;
       }
       else
@@ -118,12 +119,12 @@ Node *Interval_Tree::Get_Root()
 
 bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
 {
-  if (a.gate_id != b.gate_id)
+  if (a.gate_id != b.gate_id || a.airport != b.airport)
   {
     return false;
   }
 
-  if (a.gate_id == b.gate_id)
+  if (a.gate_id == b.gate_id && a.airport == b.airport)
   {
     if (a.high <= b.high && a.high > b.low || b.high <= a.high && b.high > a.low)
     {
@@ -131,7 +132,7 @@ bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
     }
   }
 
-  if (a.gate_id == b.gate_id)
+  if (a.gate_id == b.gate_id && a.airport == b.airport)
   {
     if (a.low >= b.low && a.low < b.high || b.low >= a.low && b.low < a.high)
     {
@@ -141,10 +142,10 @@ bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
   return false;
 }
 
-std::vector<Interval> Interval_Tree::Find_Conflicts(int low, int high, std::string flight, std::string gate_id)
+std::vector<Interval> Interval_Tree::Find_Conflicts(int low, int high, std::string airport, std::string flight, std::string gate_id)
 {
   std::vector<Interval> out;
-  Find_Helper(root, Interval{low, high, flight, gate_id}, out);
+  Find_Helper(root, Interval{low, high, airport, flight, gate_id}, out);
   return out;
 }
 

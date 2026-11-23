@@ -1,0 +1,28 @@
+/* 1. Centers the entire table container horizontally & vertically */
+.airport {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+.airport-table {
+  width: 60%;
+  max-width: 900px;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.airport-table th {
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  padding: 12px 8px;
+  border-bottom: 2px solid #334155;
+}
+
+.airport-table td {
+  text-align: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid #e2e8f0;
+}

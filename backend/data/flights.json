@@ -1,32 +1,352 @@
 [
   {
-    "flight": "UA1234",
-    "gate_id": "B12",
-    "arrive": "08:30",
-    "depart": "09:15"
+    "airport": "ORD",
+    "flight": "UA1656",
+    "gate_id": "B14",
+    "arrive": "07:05",
+    "depart": "07:50"
   },
   {
-    "flight": "AA567",
+    "airport": "ORD",
+    "flight": "UA1735",
+    "gate_id": "C4",
+    "arrive": "13:20",
+    "depart": "14:30"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2918",
+    "gate_id": "B16",
+    "arrive": "13:35",
+    "depart": "14:35"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2333",
+    "gate_id": "B12",
+    "arrive": "08:10",
+    "depart": "08:55"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1880",
+    "gate_id": "C6",
+    "arrive": "12:15",
+    "depart": "13:00"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA422",
+    "gate_id": "B14",
+    "arrive": "10:00",
+    "depart": "10:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA231",
+    "gate_id": "B16",
+    "arrive": "16:05",
+    "depart": "16:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1663",
+    "gate_id": "C6",
+    "arrive": "07:35",
+    "depart": "08:20"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1508",
+    "gate_id": "B14",
+    "arrive": "08:00",
+    "depart": "08:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1654",
+    "gate_id": "B16",
+    "arrive": "12:15",
+    "depart": "13:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2542",
+    "gate_id": "C6",
+    "arrive": "06:10",
+    "depart": "07:20"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2899",
+    "gate_id": "B16",
+    "arrive": "08:45",
+    "depart": "09:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA426",
+    "gate_id": "B14",
+    "arrive": "14:25",
+    "depart": "15:20"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1631",
+    "gate_id": "C6",
+    "arrive": "16:45",
+    "depart": "17:40"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA569",
+    "gate_id": "C6",
+    "arrive": "10:25",
+    "depart": "11:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1238",
+    "gate_id": "B12",
+    "arrive": "14:55",
+    "depart": "16:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2670",
+    "gate_id": "C4",
+    "arrive": "16:50",
+    "depart": "17:35"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA914",
+    "gate_id": "B12",
+    "arrive": "11:50",
+    "depart": "12:30"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1981",
+    "gate_id": "B14",
+    "arrive": "08:45",
+    "depart": "09:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1493",
+    "gate_id": "C6",
+    "arrive": "11:35",
+    "depart": "12:35"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA887",
+    "gate_id": "B14",
+    "arrive": "12:35",
+    "depart": "13:40"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA753",
+    "gate_id": "B12",
+    "arrive": "13:45",
+    "depart": "14:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA113",
+    "gate_id": "C6",
+    "arrive": "13:15",
+    "depart": "14:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1196",
+    "gate_id": "B16",
+    "arrive": "17:00",
+    "depart": "18:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2494",
+    "gate_id": "C4",
+    "arrive": "12:00",
+    "depart": "13:00"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2845",
+    "gate_id": "B16",
+    "arrive": "07:10",
+    "depart": "08:15"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1428",
+    "gate_id": "B16",
+    "arrive": "15:05",
+    "depart": "16:00"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2733",
+    "gate_id": "C4",
+    "arrive": "08:20",
+    "depart": "09:35"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2423",
+    "gate_id": "C4",
+    "arrive": "06:00",
+    "depart": "06:55"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2808",
+    "gate_id": "B14",
+    "arrive": "13:30",
+    "depart": "14:15"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1102",
+    "gate_id": "B16",
+    "arrive": "11:10",
+    "depart": "12:00"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA483",
+    "gate_id": "B12",
+    "arrive": "09:50",
+    "depart": "10:30"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1129",
+    "gate_id": "C6",
+    "arrive": "08:40",
+    "depart": "09:55"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA831",
+    "gate_id": "C6",
+    "arrive": "14:25",
+    "depart": "15:25"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2169",
+    "gate_id": "B12",
+    "arrive": "10:35",
+    "depart": "11:30"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA666",
+    "gate_id": "C4",
+    "arrive": "14:35",
+    "depart": "15:40"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1828",
     "gate_id": "B12",
     "arrive": "09:15",
     "depart": "10:00"
   },
   {
-    "flight": "UA2786",
-    "gate_id": "B12",
-    "arrive": "08:45",
-    "depart": "09:40"
+    "airport": "ORD",
+    "flight": "UA2633",
+    "gate_id": "B14",
+    "arrive": "11:15",
+    "depart": "12:15"
   },
   {
-    "flight": "UA88",
-    "gate_id": "B12",
-    "arrive": "10:00",
-    "depart": "10:45"
+    "airport": "ORD",
+    "flight": "UA1957",
+    "gate_id": "B14",
+    "arrive": "15:20",
+    "depart": "16:15"
   },
   {
-    "flight": "AA880",
+    "airport": "ORD",
+    "flight": "UA2700",
+    "gate_id": "B16",
+    "arrive": "10:05",
+    "depart": "10:50"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1939",
     "gate_id": "B12",
-    "arrive": "10:45",
+    "arrive": "12:35",
+    "depart": "13:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA671",
+    "gate_id": "B12",
+    "arrive": "06:45",
+    "depart": "07:40"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2784",
+    "gate_id": "C4",
+    "arrive": "07:00",
+    "depart": "08:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1616",
+    "gate_id": "B16",
+    "arrive": "06:15",
+    "depart": "07:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA292",
+    "gate_id": "C4",
+    "arrive": "15:30",
+    "depart": "16:45"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1226",
+    "gate_id": "B12",
+    "arrive": "06:00",
+    "depart": "06:40"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1184",
+    "gate_id": "C4",
+    "arrive": "09:20",
+    "depart": "10:35"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA2399",
+    "gate_id": "C4",
+    "arrive": "10:40",
     "depart": "11:30"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1478",
+    "gate_id": "B14",
+    "arrive": "06:10",
+    "depart": "07:05"
+  },
+  {
+    "airport": "ORD",
+    "flight": "UA1322",
+    "gate_id": "C6",
+    "arrive": "15:55",
+    "depart": "16:40"
   }
 ]

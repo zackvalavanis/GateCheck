@@ -1,9 +1,11 @@
 #include <vector>
+#include <string>
 
 struct Interval
 {
   int low;
   int high;
+  std::string airport;
   std::string flight;
   std::string gate_id;
 };
@@ -19,34 +21,32 @@ struct Node
 class Interval_Tree
 {
 public:
-  // Initiates the interval tree data structure
   Interval_Tree();
 
-  // Destroys the interval tree
   ~Interval_Tree();
 
-  void Destroy_Recursive(Node *root);
-
-  Node *New_Node(int low, int high, std::string flight, std::string gate_id);
-
-  void Insert_Interval(int a, int b, std::string flight, std::string gate_id);
-
-  void Update_Maximum(Node *root);
+  void Insert_Interval(int a, int b, std::string airport, std::string flight, std::string gate_id);
 
   std::string report(Node *root);
 
+  bool Interval_Overlap(const Interval &a, const Interval &b);
+
+  std::vector<Interval> Find_Conflicts(int low, int high, std::string airport, std::string flight, std::string gate_id);
+
+  std::vector<Interval> All_Intervals();
+
   Node *Get_Root();
 
-  bool Interval_Overlap(const Interval &a, const Interval &b);
+private:
+  Node *New_Node(int low, int high, std::string airport, std::string flight, std::string gate_id);
+
+  void Destroy_Recursive(Node *root);
+
+  void Update_Maximum(Node *root);
 
   void Find_Helper(Node *node, const Interval &q, std::vector<Interval> &out);
 
   void All_Helper(Node *node, std::vector<Interval> &out);
 
-  std::vector<Interval> Find_Conflicts(int low, int high, std::string flight, std::string gate_id);
-
-  std::vector<Interval> All_Intervals();
-
-private:
   Node *root = nullptr;
 };
