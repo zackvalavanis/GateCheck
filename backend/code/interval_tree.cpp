@@ -3,7 +3,22 @@
 
 Interval_Tree::Interval_Tree() {};
 
-Interval_Tree::~Interval_Tree() {};
+void Interval_Tree::Destroy_Recursive(Node *root)
+{
+  if (root == nullptr)
+  {
+    return;
+  }
+
+  Destroy_Recursive(root->left);
+  Destroy_Recursive(root->right);
+  delete root;
+}
+
+Interval_Tree::~Interval_Tree()
+{
+  Destroy_Recursive(root);
+};
 
 Node *Interval_Tree::New_Node(int low, int high, std::string flight, std::string gate_id)
 {
@@ -103,22 +118,33 @@ Node *Interval_Tree::Get_Root()
 
 bool Interval_Tree::Interval_Overlap(const Interval &a, const Interval &b)
 {
-  if (a.high <= b.high && a.high > b.low || b.high <= a.high && b.high > a.low)
+  if (a.gate_id != b.gate_id)
   {
-    return true;
+    return false;
   }
 
-  if (a.low >= b.low && a.low < b.high || b.low >= a.low && b.low < a.high)
+  if (a.gate_id == b.gate_id)
   {
-    return true;
+    if (a.high <= b.high && a.high > b.low || b.high <= a.high && b.high > a.low)
+    {
+      return true;
+    }
+  }
+
+  if (a.gate_id == b.gate_id)
+  {
+    if (a.low >= b.low && a.low < b.high || b.low >= a.low && b.low < a.high)
+    {
+      return true;
+    }
   }
   return false;
 }
 
-std::vector<Interval> Interval_Tree::Find_Conflicts(int low, int high)
+std::vector<Interval> Interval_Tree::Find_Conflicts(int low, int high, std::string flight, std::string gate_id)
 {
   std::vector<Interval> out;
-  Find_Helper(root, Interval{low, high}, out);
+  Find_Helper(root, Interval{low, high, flight, gate_id}, out);
   return out;
 }
 
@@ -146,11 +172,25 @@ void Interval_Tree::Find_Helper(Node *node, const Interval &q, std::vector<Inter
     return;
   }
   Find_Helper(node->right, q, out);
+};
+
+void Interval_Tree::All_Helper(Node *node, std::vector<Interval> &out)
+{
+  if (node == nullptr)
+  {
+    return;
+  }
+
+  All_Helper(node->left, out);
+
+  out.push_back(node->i);
+
+  All_Helper(node->right, out);
 }
 
 std::vector<Interval> Interval_Tree::All_Intervals()
 {
   std::vector<Interval> out;
-  Find_Helper(root, Interval{0, 1440}, out);
+  All_Helper(root, out);
   return out;
 }

@@ -61,8 +61,8 @@ int main()
 
     json out = json::array();
 
-    for(const Interval &iv : gate.Find_Conflicts(body["low"], body["high"]))
-    out.push_back({{"low", iv.low}, {"high", iv.high}});
+    for(const Interval &iv : gate.Find_Conflicts(body["low"], body["high"], body["flight"], body["gate_id"]))
+    out.push_back({{"low", iv.low}, {"high", iv.high}, {"flight", iv.flight}, {"gate_id", iv.gate_id}});
     res.set_content(out.dump() + "\n", "application/json"); });
 
   std::cout << "Gatecheck server on http://localhost:8080" << std::endl;

@@ -25,6 +25,8 @@ public:
   // Destroys the interval tree
   ~Interval_Tree();
 
+  void Destroy_Recursive(Node *root);
+
   Node *New_Node(int low, int high, std::string flight, std::string gate_id);
 
   void Insert_Interval(int a, int b, std::string flight, std::string gate_id);
@@ -39,7 +41,9 @@ public:
 
   void Find_Helper(Node *node, const Interval &q, std::vector<Interval> &out);
 
-  std::vector<Interval> Find_Conflicts(int low, int high);
+  void All_Helper(Node *node, std::vector<Interval> &out);
+
+  std::vector<Interval> Find_Conflicts(int low, int high, std::string flight, std::string gate_id);
 
   std::vector<Interval> All_Intervals();
 
