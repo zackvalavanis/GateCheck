@@ -5,23 +5,25 @@ Interval_Tree::Interval_Tree() {};
 
 Interval_Tree::~Interval_Tree() {};
 
-Node *Interval_Tree::New_Node(int low, int high)
+Node *Interval_Tree::New_Node(int low, int high, std::string flight, std::string gate_id)
 {
   Node *new_node = new Node();
   new_node->i.high = high;
   new_node->i.low = low;
+  new_node->i.gate_id = gate_id;
+  new_node->i.flight = flight;
   new_node->left = nullptr;
   new_node->right = nullptr;
   new_node->max = high;
   return new_node;
 };
 
-void Interval_Tree::Insert_Interval(int a, int b)
+void Interval_Tree::Insert_Interval(int a, int b, std::string flight, std::string gate_id)
 {
 
   if (root == nullptr)
   {
-    root = New_Node(a, b);
+    root = New_Node(a, b, flight, gate_id);
     return;
   }
   Node *curr = root;
@@ -34,7 +36,7 @@ void Interval_Tree::Insert_Interval(int a, int b)
     {
       if (curr->left == nullptr)
       {
-        curr->left = New_Node(a, b);
+        curr->left = New_Node(a, b, flight, gate_id);
         return;
       }
       else
@@ -46,7 +48,7 @@ void Interval_Tree::Insert_Interval(int a, int b)
     {
       if (curr->right == nullptr)
       {
-        curr->right = New_Node(a, b);
+        curr->right = New_Node(a, b, flight, gate_id);
         return;
       }
       else

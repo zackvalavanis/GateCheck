@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 
 export function HomePage() {
   const [flights, setFlights] = useState<Flights[]>([])
-  const index = 0;
 
   useEffect(() => {
     const get_flights = async () => {
@@ -22,21 +21,22 @@ export function HomePage() {
     get_flights();
   }, [])
 
-  console.log(flights);
-
   const format_time = (minutes: number): string => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
     return `${String(hours).padStart(2, '0')}: ${String(mins).padStart(2, '0')}`
   }
 
-
   return (
     <div>
       <h1>Home</h1>
+      <div>
+        <h1>Gates</h1>
+        <h1></h1>
+      </div>
       {flights.map((flight) => (
-        <div key={index + 1}>
-          <h1>Arrival: {format_time(flight.low)} Departure {format_time(flight.high)}</h1>
+        <div key={flight.gate_id}>
+          <h1>Gate: {flight.gate_id} Flight #:{flight.flight} Arrival: {format_time(flight.low)} Departure {format_time(flight.high)}</h1>
         </div>
       ))}
     </div>

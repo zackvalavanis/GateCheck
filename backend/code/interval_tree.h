@@ -4,6 +4,8 @@ struct Interval
 {
   int low;
   int high;
+  std::string flight;
+  std::string gate_id;
 };
 
 struct Node
@@ -23,9 +25,9 @@ public:
   // Destroys the interval tree
   ~Interval_Tree();
 
-  Node *New_Node(int low, int high);
+  Node *New_Node(int low, int high, std::string flight, std::string gate_id);
 
-  void Insert_Interval(int a, int b);
+  void Insert_Interval(int a, int b, std::string flight, std::string gate_id);
 
   void Update_Maximum(Node *root);
 

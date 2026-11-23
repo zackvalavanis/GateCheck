@@ -26,19 +26,19 @@ int main()
   for (const auto &f : flights)
   {
     std::string flight = f["flight"];
-    std::string gate_id = f["gate"];
+    std::string gate_id = f["gate_id"];
     int low = to_minutes(f["arrive"]);
     int high = to_minutes(f["depart"]);
 
     std::cout << flight << " at " << gate_id << ": " << low << " to " << high << std::endl;
-    gate.Insert_Interval(low, high);
+    gate.Insert_Interval(low, high, flight, gate_id);
   }
 
   svr.Post("/api/intervals", [&](const httplib::Request &req, httplib::Response &res)
            {
     auto body = json::parse(req.body);;
     std::lock_guard<std::mutex> lock(mtx);
-    gate.Insert_Interval(body["low"], body["high"]);
+    gate.Insert_Interval(body["low"], body["high"], body["flight"], body["gate_id"]);
     res.set_content(json{{"ok", true}}.dump(), "application/json"); });
 
   svr.Get("/api/report", [&](const httplib::Request &req, httplib::Response &res)
@@ -51,7 +51,7 @@ int main()
     std::lock_guard<std::mutex> lock(mtx);
     json out = json::array();
     for(const Interval & iv : gate.All_Intervals())
-      out.push_back({{"low", iv.low}, {"high", iv.high}}); 
+      out.push_back({{"low", iv.low}, {"high", iv.high}, {"flight", iv.flight}, {"gate_id", iv.gate_id}}); 
     res.set_content(out.dump() + "\n", "application/json"); });
 
   svr.Post("/api/conflicts", [&](const httplib::Request &req, httplib::Response &res)
