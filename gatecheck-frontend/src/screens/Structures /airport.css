@@ -1,4 +1,11 @@
-/* 1. Centers the entire table container horizontally & vertically */
+.airport-page-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
 .airport {
   display: flex;
   justify-content: center;
@@ -8,7 +15,7 @@
 
 
 .airport-table {
-  width: 60%;
+  width: 100%;
   max-width: 900px;
   table-layout: fixed;
   border-collapse: collapse;
