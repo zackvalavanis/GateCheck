@@ -31,3 +31,39 @@ bool higher(pq_data &a, pq_data &b)
   }
   return false;
 }
+
+void percolate_up(pq_data *arr, int i)
+{
+  while (i > 0)
+  {
+    int parent_index = (i - 1) / 2;
+
+    if (arr[i].priority >= arr[parent_index].priority)
+    {
+      return;
+    }
+    else
+    {
+      pq_data temp = arr[i];
+      arr[i] = arr[parent_index];
+      arr[parent_index] = temp;
+      i = parent_index;
+    }
+  }
+}
+
+void insert_pq(pq *&queue, Interval flight, float priority)
+{
+  queue->arr[queue->size].flight = flight;
+  queue->arr[queue->size].priority = priority;
+  queue->arr[queue->size].order = queue->next_up;
+  queue->next_up++;
+
+  percolate_up(queue->arr, queue->size);
+  queue->size++;
+}
+
+Interval peek_pq(pq *&queue)
+{
+  return queue->arr->flight;
+}
