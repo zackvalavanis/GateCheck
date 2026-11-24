@@ -1,11 +1,11 @@
-#include <vector>
-#include <string>
+#pragma once
+#include "interval_tree.h"
 
-#define INITIAL_PQ_MAX_CAP 256
+#define INITIAL_PQ_MAX_CAP 4096
 
 struct pq_data
 {
-  std::string data;
+  Interval flight;
   int order;
   float priority;
 };
@@ -20,11 +20,11 @@ struct pq
 
 pq *init_priority_queue();
 
-std::string peek_pq(pq *&queue);
+Interval peek_pq(pq *&queue);
 
-void insert_pq(pq *&queue, std::string text, float priority);
+void insert_pq(pq *&queue, Interval flight, float priority);
 
-std::string remove_pq(pq *&queue);
+Interval remove_pq(pq *&queue);
 
 bool higher(pq_data &a, pq_data &b);
 
