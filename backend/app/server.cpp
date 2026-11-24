@@ -106,6 +106,19 @@ int main()
                res.set_content(json{{"flight", next_flight.flight}, {"low", next_flight.low}, {"high", next_flight.high}, {"gate_id", gate}}.dump() + "\n", "application/json");
              } });
 
+  svr.Get("/api/state", [&](const httplib::Request &req, httplib::Response &res)
+          {
+    std::lock_guard<std::mutex> lock(mtx);
+    json out = json::array();
+
+    for(auto & entry : gates){
+      json flights_out = json::array();
+      for(const Interval & iv : entry.second.All_Intervals())
+        flights_out.push_back({{"low", iv.low}, {"high", iv.high}, {"airport", iv.airport}, {"flight", iv.flight}, {"gate_id", iv.gate_id}}); 
+      out.push_back({{"gate_id", entry.first}, {"flights", flights_out}});
+    }
+    res.set_content(out.dump() + "\n", "application/json"); });
+
   std::cout << "Gatecheck server on http://localhost:8080" << std::endl;
 
   if (!svr.listen("0.0.0.0", 8080))
