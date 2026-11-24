@@ -71,5 +71,5 @@ ENABLE_TESTING()
 add_executable( run_app "app/main.cpp" ${USER_FILES} )
 
 find_package(Threads REQUIRED)
-add_executable(run_server app/server.cpp code/interval_tree.cpp)
+add_executable(run_server app/server.cpp ${USER_FILES})
 target_link_libraries(run_server Threads::Threads)  
