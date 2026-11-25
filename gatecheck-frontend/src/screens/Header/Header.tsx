@@ -7,7 +7,7 @@ export function Header() {
     <header className="header">
       <img src={airplane} alt="GateCheck"></img>
       <nav>
-        <Link to='./airport_sim'>Home</Link>
+        <Link to='./'>Home</Link>
         <Link to='./airport_sim'>Airport Simulator</Link>
       </nav>
     </header>

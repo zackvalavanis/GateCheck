@@ -12,3 +12,8 @@ export interface Gate {
   gate_id: string
   flights: Flights[]
 }
+
+export interface Airport {
+  airport_name: string
+  airport_id: string
+}
