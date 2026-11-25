@@ -5,6 +5,9 @@ import './airport.css'
 export function Airport() {
   const [gates, setGates] = useState<Gate[]>([])
   const [gate, setGate] = useState("")
+  const [page, setPage] = useState(1)
+  const PAGE_SIZE = 100;
+  const start = PAGE_SIZE * (page - 1);
 
   useEffect(() => {
     const get_flights = async () => {
@@ -37,7 +40,7 @@ export function Airport() {
         clearInterval(id);
         return;
       }
-    }, 5000)
+    }, 1)
     return () => clearInterval(id);
   }, [])
 
@@ -51,12 +54,16 @@ export function Airport() {
     g.flights
   ))
 
+
   const filteredFlights = flights.filter((flight) => {
     if (gate === "All" || gate == "") {
       return true
     }
     return flight.gate_id === gate
   });
+
+  const totalPages = Math.ceil(filteredFlights.length / PAGE_SIZE)
+  const pageFlights = filteredFlights.slice(start, start + PAGE_SIZE);
 
   return (
     <div className='airportpage-layout'>
@@ -72,6 +79,7 @@ export function Airport() {
           <table className="airport-table">
             <thead>
               <tr>
+                <th>Number</th>
                 <th>Airport</th>
                 <th>Gate</th>
                 <th>Flight</th>
@@ -80,8 +88,9 @@ export function Airport() {
               </tr>
             </thead>
             <tbody>
-              {filteredFlights.map((flight) => (
+              {pageFlights.map((flight, index) => (
                 <tr key={flight.flight}>
+                  <td>{start + 1 + index}</td>
                   <td>{flight.airport}</td>
                   <td>{flight.gate_id}</td>
                   <td>{flight.flight}</td>
@@ -91,6 +100,20 @@ export function Airport() {
               ))}
             </tbody>
           </table>
+          <div>
+            {page >= 2 ? (
+              <button onClick={() => setPage(page - 1)}>Previous Page</button>
+
+            ) : (
+              ""
+            )}
+            <span>Page {page} of {totalPages}</span>
+            {page < totalPages ? (
+              <button onClick={() => setPage(page + 1)}>Next Page</button>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     </div>

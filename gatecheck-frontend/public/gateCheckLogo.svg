@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" width="520" height="128">
+  <rect width="128" height="128" rx="28" fill="#0F2A4A"/>
+  <rect x="22" y="34" width="46" height="12" rx="6" fill="#4FA3FF"/>
+  <rect x="74" y="34" width="32" height="12" rx="6" fill="#4FA3FF" opacity="0.55"/>
+  <rect x="22" y="58" width="28" height="12" rx="6" fill="#4FA3FF" opacity="0.55"/>
+  <rect x="56" y="58" width="50" height="12" rx="6" fill="#4FA3FF"/>
+  <rect x="22" y="82" width="38" height="12" rx="6" fill="#4FA3FF"/>
+  <path d="M72 88 L82 98 L104 76" fill="none" stroke="#3DDC97" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="152" y="80" font-family="Inter, Helvetica, Arial, sans-serif" font-size="54" font-weight="700" fill="#0F2A4A">Gate<tspan fill="#2E8BEF">Check</tspan></text>
+  <text x="154" y="108" font-family="Inter, Helvetica, Arial, sans-serif" font-size="15" letter-spacing="3" fill="#5B6B7F">GATE CONFLICT DETECTION</text>
+</svg>
