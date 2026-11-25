@@ -1,11 +1,13 @@
 import Box from '@mui/material/Box';
-import type { Gate } from '../../types/types';
+import { type Gate } from '../../types/types';
 import { useState, useEffect } from 'react';
 import "./box.css"
+import { GateModal } from './gateModal';
 
 export default function BoxBasic() {
   const [gates, setGates] = useState<Gate[]>([])
   const [loading, setLoading] = useState(false)
+  const [gateModalShowing, setIsGateModalShowing] = useState<Gate | null>(null)
 
 
   useEffect(() => {
@@ -29,6 +31,11 @@ export default function BoxBasic() {
   }, [])
 
 
+  const handleOpenGateModal = (gate: Gate) => {
+    setIsGateModalShowing(gate)
+  }
+
+
   return (
     <>
       {
@@ -36,12 +43,13 @@ export default function BoxBasic() {
           <div className='box-page'>
             {gates.map((gate) => (
               <div key={gate.gate_id}>
-                <Box component="section" sx={{ p: 3, border: '1px dashed grey' }}>
+                <Box onClick={() => handleOpenGateModal(gate)} component="section" sx={{ p: 3, border: '1px dashed grey' }}>
                   <p>{gate.gate_id}</p>
                 </Box>
               </div>
             ))}
-          </div>
+            <GateModal gates={gateModalShowing} show={gateModalShowing != null} onClose={() => setIsGateModalShowing(null)}></GateModal>
+          </div >
         )
       }
     </>

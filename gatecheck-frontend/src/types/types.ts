@@ -17,3 +17,10 @@ export interface Airport {
   airport_name: string
   airport_id: string
 }
+
+export interface GateModalType {
+  show: boolean
+  onClose: () => void
+  gates: Gate | null
+  // flights: Flights[]
+}
