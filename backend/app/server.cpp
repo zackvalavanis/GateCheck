@@ -50,12 +50,12 @@ int main()
     insert_pq(new_queue, Interval{low, high, airport, flight, ""}, low);
   }
 
-  std::ifstream gate_info("../data/gates.json");
+  std::ifstream gate_info("../data/ord.json");
   json gate_list = json::parse(gate_info);
 
-  for (const auto &g : gate_list)
+  for (const auto &g : gate_list.at("gates"))
   {
-    std::string gate_id = g["gate_id"];
+    std::string gate_id = g.at("gate_id");
     gates[gate_id];
   }
 

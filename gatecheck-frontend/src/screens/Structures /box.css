@@ -1,0 +1,6 @@
+.box-page {
+  display: grid;
+  grid-template-columns: repeat(10, .5fr);
+  grid-auto-rows: 100px;
+  gap: 16px;
+}

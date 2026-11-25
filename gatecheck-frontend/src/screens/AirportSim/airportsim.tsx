@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './airportsim.css'
 import type { Airport } from '../../types/types'
+import { GateLoader } from '../Structures /GateLoader'
 
 export function AirportSim() {
   const [airport, setAirport] = useState<Airport | null>(null)
@@ -14,8 +15,7 @@ export function AirportSim() {
     { airport_name: "Los Angeles International Airport ", airport_id: "LAX" },
   ]
 
-  console.log("hello")
-
+  console.log(airport)
 
   return (
     <div className="airport-sim-page">
@@ -25,6 +25,7 @@ export function AirportSim() {
           <option key={air.airport_id} value={air.airport_id}>{air.airport_id}</option>
         ))}
       </select>
+      <GateLoader />
     </div>
   )
 }
